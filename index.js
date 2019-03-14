@@ -15,6 +15,9 @@ server.get('/api/users',(req, res) => {
         .then(users => {
             res.status(200).json(users);
         })
+        .catch(err => {
+            res.status(500).json({ message: "The users information could not be retrieved."})
+        })
 });
 
 server.listen(port, () => {
