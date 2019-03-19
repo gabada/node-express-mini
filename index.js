@@ -16,7 +16,6 @@ server.post('/api/users', (req, res) => {
     res
       .status(400)
       .json({ errorMessage: 'Please provide name and bio for the user.' });
-    return;
   }
   db.insert(newUser)
     .then(id => {
@@ -28,7 +27,6 @@ server.post('/api/users', (req, res) => {
       res.status(500).json({
         error: 'There was an error while saving the user to the database'
       });
-      return;
     });
 });
 
@@ -41,7 +39,6 @@ server.get('/api/users', (req, res) => {
       res
         .status(500)
         .json({ message: 'The users information could not be retrieved.' });
-      return;
     });
 });
 
@@ -54,7 +51,6 @@ server.get('/api/users/:id', (req, res) => {
       res
         .status(404)
         .json({ message: 'The user with the specified ID does not exist.' });
-      return;
     }
   });
 });
@@ -68,7 +64,6 @@ server.delete('/api/users/:id', (req, res) => {
       res
         .status(404)
         .json({ message: 'The user with the specified ID does not exist.' });
-      return;
     }
   });
 });
@@ -80,7 +75,6 @@ server.put('/api/users/:id', (req, res) => {
     res
       .status(400)
       .json({ errorMessage: 'Please provide name and bio for the user.' });
-    return;
   }
   db.update(id, { name, bio })
     .then(user => {
